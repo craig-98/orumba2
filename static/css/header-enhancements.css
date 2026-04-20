@@ -1,4 +1,4 @@
-/* DISABLED FOR MOBILE NAVBAR FIX - Conflicts with navbar.css */\n\n.header-glass.navbar,\n.hamburger,\n.nav-container,\n.nav-list,\n.nav-menu,\n.nav-title-mobile,\n.dropdown,\n.dropdown-menu {\n  display: none !important;\n}\n\n/* Premium Futuristic Navbar - Centered 15% margins */
+  /* display: none !important; FIXED */\n
 .header-glass.navbar {
     position: fixed;
     top: 7vh;
