@@ -1,9 +1,16 @@
+:root {
+  --navbar-h: 75px;
+}
+
+body {
+  padding-top: var(--navbar-h);
+}
+
 /* Clean Navbar Rewrite - No Conflicts */
 
-.header-glass.navbar {
-  position: fixed;
-  top: 1rem;
-  left: 50%;
+
+.header-glass.navbar {\n  position: fixed !important;\n  top: 1rem !important;\n  left: 50% !important;\n
+
   transform: translateX(-50%);
   width: 90vw;
   max-width: 1400px;
@@ -37,10 +44,8 @@
   gap: 2.5rem;
 }
 
-.nav-list {
-  display: flex;
-  list-style: none;
-  margin: 0;
+.nav-list {\n  display: flex !important;\n  list-style: none !important;\n  margin: 0 !important;\n
+
   padding: 0;
   gap: 2.5rem;
   align-items: center;

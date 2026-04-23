@@ -1,9 +1,17 @@
-/* DISABLED FOR MOBILE NAVBAR FIX - Duplicate conflicts */\n\n.header-glass.navbar,\n.hamburger,\n.nav-container,\n.nav-list,\n.nav-menu,\n.nav-title-mobile,\n.dropdown,\n.dropdown-menu {\n  display: none !important;\n}\n\n/* Navbar Fixed - No Syntax Errors, Hamburger Visible Mobile */
+:root {
+  --navbar-h: 75px;
+}
+
+body {
+  padding-top: var(--navbar-h);
+}
+
+/* Clean Navbar Rewrite - No Conflicts */
 
 .header-glass.navbar {
-  position: fixed;
-  top: 1rem;
-  left: 50%;
+  position: fixed !important;
+  top: 1rem !important;
+  left: 50% !important;
   transform: translateX(-50%);
   width: 90vw;
   max-width: 1400px;
@@ -18,28 +26,25 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  transition: all 0.3s ease;
 }
 
-.logo-link img {
+.header-glass.navbar .logo-link img {
   height: 50px;
   transition: transform 0.3s;
 }
 
-.logo-link:hover img {
-  transform: scale(1.05);
-}
-
-.nav-container {
+.header-glass.navbar .nav-container {
   flex: 1;
   display: flex;
   justify-content: center;
-  position: relative;
+  gap: 2.5rem;
 }
 
 .nav-list {
-  display: flex;
-  list-style: none;
-  margin: 0;
+  display: flex !important;
+  list-style: none !important;
+  margin: 0 !important;
   padding: 0;
   gap: 2.5rem;
   align-items: center;
@@ -85,7 +90,7 @@
   position: absolute;
   top: calc(100% + 10px);
   left: 50%;
-  transform: translateX(-50%) translateY(-10px);
+  transform: translateX(-50%);
   background: rgba(10, 25, 10, 0.98);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(34, 197, 94, 0.3);
@@ -98,13 +103,21 @@
   margin: 0;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   z-index: 10001;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+  transform: translateX(-50%) translateY(-10px);
 }
 
 .dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .dropdown:hover .dropdown-menu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
 }
 
 .dropdown-menu li a {
@@ -121,37 +134,31 @@
 }
 
 .hamburger {
-  display: none !important;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: none;
+  border: none;
   cursor: pointer;
-  padding: 0.75rem;
-  border-radius: 12px;
+  padding: 0.5rem;
+  border-radius: 10px;
   transition: all 0.3s ease;
-  margin-left: auto;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 10002;
 }
 
 .hamburger:hover {
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 5px 20px rgba(34, 197, 94, 0.3);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .hamburger svg {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
 }
 
 .hamburger rect {
-  fill: #ffdd57;
+  fill: #ffffff !important;
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transform-origin: center;
 }
 
 .hamburger.active rect:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
+  transform: rotate(45deg) translate(9px, 9px);
 }
 
 .hamburger.active rect:nth-child(2) {
@@ -163,7 +170,234 @@
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Mobile navbar styles commented out to avoid conflicts with navbar.css */
+.nav-title-mobile {
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: white;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+  order: 0;
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .header-glass.navbar {
+    width: 95vw;
+    left: 2.5vw;
+    transform: none;
+    padding: 0 1.5rem;
+  }
+  
+  .nav-list {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-glass.navbar {
+    height: 55px !important;
+    padding: 0.5rem 2rem !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
+    transform: none !important;
+    left: 2.5vw !important;
+    width: 95vw !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 0.95rem !important;
+  }
+
+  .header-glass.navbar .logo-link {
+    flex-shrink: 0;
+  }
+
+  .header-glass.navbar .hamburger {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .header-glass.navbar .logo-link img {
+    height: 40px !important;
+  }
+
+  .header-glass.navbar .hamburger {
+    padding: 0.5rem !important;
+  }
+
+  .header-glass.navbar .hamburger svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .header-glass.navbar .nav-title-mobile {
+    display: none !important;
+  }
+
+  .header-glass.navbar .logo-link {
+    margin: 0 !important;
+  }
+
+  .header-glass.navbar .hamburger {
+    display: block !important;
+  }
+
+  .header-glass.navbar .nav-container {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+  }
+
+  .nav-title-mobile {
+    display: none !important;
+  }
+
+  .header-glass.navbar .nav-container {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999;
+  }
+
+  .logo-link {
+    grid-area: logo;
+    flex-shrink: 0;
+  }
+
+  .hamburger {
+    grid-area: hamburger;
+    display: block !important;
+    position: static !important;
+    justify-self: end;
+    margin: 0 !important;
+    z-index: 10002;
+    padding: 0.75rem;
+    background: rgba(255,255,255,0.1) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    transform: none !important;
+  }
+
+  .nav-menu {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(6, 20, 6, 0.98);
+    backdrop-filter: blur(30px);
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    border-radius: 0 0 25px 25px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-container.active {
+    max-height: 500px;
+    padding: 1.5rem 0;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    overflow-y: auto;
+    max-height: 70vh;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(34, 197, 94, 0.5) transparent;
+  }
+
+  .nav-list::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .nav-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .nav-list::-webkit-scrollbar-thumb {
+    background: rgba(34, 197, 94, 0.5);
+    border-radius: 3px;
+  }
+
+  .nav-list a {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 0.1rem 0;
+    position: relative;
+  }
+
+  .nav-list a:hover,
+  .nav-list a:active,
+  .nav-list a:focus {
+    background: rgba(34, 197, 94, 0.1);
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
+  }
+
+  .nav-list li {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideDown 0.4s ease forwards;
+  }
+
+  .nav-list li:nth-child(1) { animation-delay: 0.1s; }
+  .nav-list li:nth-child(2) { animation-delay: 0.15s; }
+  .nav-list li:nth-child(3) { animation-delay: 0.2s; }
+
+  @keyframes slideDown {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-list a {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    width: 100%;
+    border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+  }
+
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: rgba(34, 197, 94, 0.15);
+    margin-top: 0.5rem;
+    border-radius: 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+    transform: translateY(-10px);
+  }
+
+  .dropdown.active .dropdown-menu {
+    max-height: 400px;
+    padding: 1rem 0;
+    transform: translateY(0);
+  }
+
+  .dropdown-menu li a {
+    padding: 1rem 3rem 1rem 3rem;
+  }
+}
 
 .header-glass.navbar.scrolled {
   top: 0.5rem;

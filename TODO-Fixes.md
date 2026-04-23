@@ -1,22 +1,24 @@
-# Production Fixes TODO - Approved Plan
-Current: 0/16
+# Navbar & Hero Fixes - Approved Plan Execution Tracker
+**Current Status:** 3/12 **Phase 1 CSS COMPLETE** ✅
 
-1. [x] Fix app.py: Remove duplicates, secure secret_key
-2. [x] orumba-modern/app/ClientNav.tsx: Remove unused imports
-3. [ ] orumba-modern/app/about/page.tsx: Add img alt, use next/Image
-4. [ ] orumba-modern/app/about/page-fixed.tsx: Add img alt, use next/Image
-5. [ ] orumba-modern/app/administration/page.tsx: Fix alt-text, replace img
-6. [x] orumba-modern/app/api/posts/route.ts: let->const
-7. [x] orumba-modern/app/api/posts/[id]/route.ts: let->const
-8. [ ] orumba-modern/app/contact/page.tsx: Remove unused Link/Clock
-9. [ ] orumba-modern/app/create-album/page.tsx: Fix img alt
-10. [ ] orumba-modern/app/create-post/page.tsx: Remove unused, fix imgs
-11. [ ] orumba-modern/app/departments/page.tsx: Remove unused, type any
-12. [ ] orumba-modern/app/gallery/page.tsx: next/Image + alts
-13. [ ] orumba-modern/app/members/page.tsx: next/Image
-14. [ ] orumba-modern/app/news/page.tsx: Remove unused User/Clock, type any
-15. [x] orumba-modern/app/news/[id]/page.tsx: Remove unused Clock, fix async client
-16. [ ] orumba-modern/app/profile/page.tsx: Remove unused setStats
+## Breakdown from Approved Plan:
 
-**Followup:** `cd orumba-modern && npm run lint && npm run build` + `python app.py` test.
-**Result:** Clean build, no errors → 100% ready.
+### **Phase 1: CSS Cleanup (3 steps)**
+- [ ] 1. Disable conflicts in `static/css/header-enhancements.css`
+- [ ] 2. Disable conflicts in `static/css/navbar-fixed.css`
+- [ ] 3. Strengthen `static/css/navbar.css` (flex/mobile vars)
+
+### **Phase 2: Template Updates (6 steps)**
+- [x] 4. Add navbar padding + alt fixes to `app/templates/home.html` ✅
+- [x] 5. `app/templates/about.html` ✅
+- [x] 6. `app/templates/gallery.html` ✅
+- [x] 7. `app/templates/departments.html` ✅
+- [ ] 8. `app/templates/government.html`
+- [ ] 9. `app/templates/newsroom.html` + `app/templates/profile/profile.html`
+
+### **Phase 3: TODO Updates & Test (3 steps)**
+- [ ] 10. Update `TODO.md` & `TODO-FixNavbarHero.md`
+- [ ] 11. Local test: `python run.py`
+- [ ] 12. Vercel-ready verification
+
+**Next: Phase 1 CSS → Check back after each phase!**

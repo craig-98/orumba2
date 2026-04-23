@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="/static/css/glassmorphism.css">
     <link rel="stylesheet" href="/static/css/global-theme.css">
     <link rel="stylesheet" href="/static/css/header-enhancements.css">
+    <link rel="stylesheet" href="/static/css/timeline.css">
 </head>
 <body>
     {% include '_header.html' %}
 
-    <!-- Newsroom Header Style -->
+    <!-- Hero -->
     <section class="hero" style="height: 70vh;">
         <div class="hero-bg" style="background: url('/static/images/orumba-header-bakground-image3.jpg'); background-size: cover; background-position: center;"></div>
         <div class="glass-hero" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 3rem 2.5rem; max-width: 700px;">
@@ -21,74 +22,71 @@
         </div>
     </section>
 
-    <!-- Perfectly Centered Timeline -->
-    <section style="padding: 8rem 2rem; background: linear-gradient(135deg, #f8fff9 0%, #e6f7e9 100%); position: relative;">
-        <div class="timeline" style="max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative;">
-            
-            <!-- Centered Timeline Line -->
-            <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, transparent 0%, #22c55e 15%, #16a34a 85%, transparent 100%); transform: translateX(-50%); z-index: 1; box-shadow: 0 0 20px rgba(34,197,94,0.4);"></div>
+    <!-- Timeline Section -->
+    <section style="padding: 8rem 2rem; background: linear-gradient(135deg, #f8fff9 0%, #e6f7e9 100%);">
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-grid">
+                <!-- Pre-Colonial -->
+                <div class="timeline-item left fade-in-up">
+                    <div class="timeline-node">1000 AD</div>
+                    <h3>Pre-Colonial Era</h3>
+                    <p>1000 AD - 1900. Nri Kingdom heartland with Igbo Ukwu bronze technology nearby.</p>
+                </div>
 
-            <!-- Item 1 - LEFT SIDE -->
-            <div class="timeline-item fade-in-up glass-card" style="position: relative; width: 42%; margin: 5rem auto; margin-left: 0; background: rgba(255,255,255,0.25) !important; backdrop-filter: blur(35px) !important; padding: 3.5rem 2.5rem !important; border-radius: 28px !important; border: 1.5px solid rgba(255,255,255,0.4) !important; box-shadow: 0 35px 90px rgba(0,0,0,0.18) !important; float: left; clear: both;">
-                <div class="timeline-node" style="position: absolute; right: -42px; top: 50%; transform: translateY(-50%); width: 65px; height: 65px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%; box-shadow: 0 0 30px rgba(34,197,94,0.7); z-index: 10; transition: all 0.4s ease;"></div>
-                <h3 style="color: #111827 !important; font-size: 2.3rem; font-weight: 900; margin: 0 0 1.8rem 0; letter-spacing: -0.02em;">Pre-Colonial Era</h3>
-                <p style="color: #374151 !important; font-size: 1.25rem; line-height: 1.85; font-weight: 600; margin: 0;">1000 AD - 1900. Nri Kingdom heartland with Igbo Ukwu bronze technology nearby.</p>
+                <!-- Colonial -->
+                <div class="timeline-item right fade-in-up">
+                    <div class="timeline-node">1900</div>
+                    <h3>Colonial Period</h3>
+                    <p>1900-1960. British warrant chiefs. CMS missions establish Agulu Lake pilgrimage tradition.</p>
+                </div>
+
+                <!-- Biafran War -->
+                <div class="timeline-item left fade-in-up">
+                    <div class="timeline-node">1967</div>
+                    <h3>Biafran War</h3>
+                    <p>1967-1970. Biafra food production heartland sustaining the war effort through communal farming.</p>
+                </div>
+
+                <!-- LGA Creation -->
+                <div class="timeline-item right fade-in-up">
+                    <div class="timeline-node">1991</div>
+                    <h3>LGA Creation</h3>
+                    <p>1991. Babangida era. Ihitenesa headquarters. 10 wards including Agulu, Nanka, Nibo.</p>
+                </div>
+
+                <!-- Modern -->
+                <div class="timeline-item left fade-in-up">
+                    <div class="timeline-node">2000</div>
+                    <h3>Modern Development</h3>
+                    <p>2000-Present. Infrastructure boom. NAU campus. Agulu Lake tourism. Population 200K+.</p>
+                </div>
             </div>
-
-            <!-- Item 2 - RIGHT SIDE -->
-            <div class="timeline-item fade-in-up glass-card" style="position: relative; width: 42%; margin: 5rem auto; margin-left: auto; margin-right: 0; background: rgba(255,255,255,0.25) !important; backdrop-filter: blur(35px) !important; padding: 3.5rem 2.5rem !important; border-radius: 28px !important; border: 1.5px solid rgba(255,255,255,0.4) !important; box-shadow: 0 35px 90px rgba(0,0,0,0.18) !important; float: right; clear: both;">
-                <div class="timeline-node" style="position: absolute; left: -47px; top: 50%; transform: translateY(-50%); width: 65px; height: 65px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%; box-shadow: 0 0 30px rgba(34,197,94,0.7); z-index: 10; transition: all 0.4s ease;"></div>
-                <h3 style="color: #111827 !important; font-size: 2.3rem; font-weight: 900; margin: 0 0 1.8rem 0; letter-spacing: -0.02em;">Colonial Period</h3>
-                <p style="color: #374151 !important; font-size: 1.25rem; line-height: 1.85; font-weight: 600; margin: 0;">1900-1960. British warrant chiefs. CMS missions establish Agulu Lake pilgrimage tradition.</p>
-            </div>
-
-            <!-- Item 3 - LEFT SIDE -->
-            <div class="timeline-item fade-in-up glass-card" style="position: relative; width: 42%; margin: 5rem auto; margin-left: 0; background: rgba(255,255,255,0.25) !important; backdrop-filter: blur(35px) !important; padding: 3.5rem 2.5rem !important; border-radius: 28px !important; border: 1.5px solid rgba(255,255,255,0.4) !important; box-shadow: 0 35px 90px rgba(0,0,0,0.18) !important; float: left; clear: both;">
-                <div class="timeline-node" style="position: absolute; right: -42px; top: 50%; transform: translateY(-50%); width: 65px; height: 65px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%; box-shadow: 0 0 30px rgba(34,197,94,0.7); z-index: 10; transition: all 0.4s ease;"></div>
-                <h3 style="color: #111827 !important; font-size: 2.3rem; font-weight: 900; margin: 0 0 1.8rem 0; letter-spacing: -0.02em;">Biafran War</h3>
-                <p style="color: #374151 !important; font-size: 1.25rem; line-height: 1.85; font-weight: 600; margin: 0;">1967-1970. Biafra food production heartland sustaining the war effort through communal farming.</p>
-            </div>
-
-            <!-- Item 4 - RIGHT SIDE -->
-            <div class="timeline-item fade-in-up glass-card" style="position: relative; width: 42%; margin: 5rem auto; margin-left: auto; margin-right: 0; background: rgba(255,255,255,0.25) !important; backdrop-filter: blur(35px) !important; padding: 3.5rem 2.5rem !important; border-radius: 28px !important; border: 1.5px solid rgba(255,255,255,0.4) !important; box-shadow: 0 35px 90px rgba(0,0,0,0.18) !important; float: right; clear: both;">
-                <div class="timeline-node" style="position: absolute; left: -47px; top: 50%; transform: translateY(-50%); width: 65px; height: 65px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%; box-shadow: 0 0 30px rgba(34,197,94,0.7); z-index: 10; transition: all 0.4s ease;"></div>
-                <h3 style="color: #111827 !important; font-size: 2.3rem; font-weight: 900; margin: 0 0 1.8rem 0; letter-spacing: -0.02em;">LGA Creation</h3>
-                <p style="color: #374151 !important; font-size: 1.25rem; line-height: 1.85; font-weight: 600; margin: 0;">1991. Babangida era. Ihitenesa headquarters. 10 wards including Agulu, Nanka, Nibo.</p>
-            </div>
-
-            <!-- Item 5 - LEFT SIDE -->
-            <div class="timeline-item fade-in-up glass-card" style="position: relative; width: 42%; margin: 5rem auto; margin-left: 0; background: rgba(255,255,255,0.25) !important; backdrop-filter: blur(35px) !important; padding: 3.5rem 2.5rem !important; border-radius: 28px !important; border: 1.5px solid rgba(255,255,255,0.4) !important; box-shadow: 0 35px 90px rgba(0,0,0,0.18) !important; float: left; clear: both;">
-                <div class="timeline-node" style="position: absolute; right: -42px; top: 50%; transform: translateY(-50%); width: 65px; height: 65px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%; box-shadow: 0 0 30px rgba(34,197,94,0.7); z-index: 10; transition: all 0.4s ease;"></div>
-                <h3 style="color: #111827 !important; font-size: 2.3rem; font-weight: 900; margin: 0 0 1.8rem 0; letter-spacing: -0.02em;">Modern Development</h3>
-                <p style="color: #374151 !important; font-size: 1.25rem; line-height: 1.85; font-weight: 600; margin: 0;">2000-Present. Infrastructure boom. NAU campus. Agulu Lake tourism. Population 200K+.</p>
-            </div>
-
-            <div style="clear: both;"></div>
         </div>
     </section>
 
     {% include '_footer.html' %}
 
     <script>
-        // Scroll animations with stagger
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.fade-in-up').forEach((el, i) => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.75) {
-                    setTimeout(() => el.classList.add('animate'), i * 200);
+        // Scroll-triggered animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('animate'), index * 200);
                 }
             });
         });
 
-        // Enhanced node interactions
-        document.querySelectorAll('.timeline-node').forEach((node, i) => {
-            node.style.animationDelay = `${i * 0.3}s`;
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // Node hovers
+        document.querySelectorAll('.timeline-node').forEach(node => {
             node.addEventListener('mouseenter', () => {
-                node.style.transform = 'translateY(-50%) scale(1.4)';
+                node.style.transform = 'scale(1.4)';
                 node.style.boxShadow = '0 0 45px rgba(34,197,94,0.9)';
             });
             node.addEventListener('mouseleave', () => {
-                node.style.transform = 'translateY(-50%)';
+                node.style.transform = 'none';
                 node.style.boxShadow = '0 0 30px rgba(34,197,94,0.7)';
             });
         });

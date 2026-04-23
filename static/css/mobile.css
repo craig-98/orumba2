@@ -1,0 +1,136 @@
+/* Mobile-First Base Styles - Import first in head */
+
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Scale for phones */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  overscroll-behavior: none; /* iOS momentum stop */
+}
+
+/* Typography Clamp */
+h1 { font-size: clamp(1.8rem, 5vw, 3.2rem); line-height: 1.1; }
+h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.2; }
+h3 { font-size: clamp(1.3rem, 3.5vw, 2rem); }
+p { font-size: clamp(1rem, 3vw, 1.15rem); }
+
+/* Containers */
+.container {
+  padding: 0 clamp(1rem, 5vw, 2rem);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Navbar Mobile Refinements */
+@media (max-width: 480px) {
+  .header-glass.navbar {
+    padding: 0 clamp(1rem, 6vw, 1.5rem) !important;
+    gap: clamp(1rem, 4vw, 1.5rem) !important;
+    height: 60px !important;
+    border-radius: 25px !important;
+  }
+
+  .nav-list {
+    gap: 1rem !important;
+    padding: clamp(1rem, 4vh, 1.5rem) !important;
+  }
+
+  .nav-list a {
+    padding: 1rem !important;
+    font-size: clamp(0.9rem, 4vw, 1rem) !important;
+    min-height: 48px; /* Touch target */
+    display: flex;
+    align-items: center;
+  }
+
+  .hamburger {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 1rem !important;
+  }
+}
+
+/* Hero Mobile */
+.hero {
+  min-height: clamp(50vh, 80vw, 70vh);
+  position: relative;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 8vw, 4rem) !important;
+}
+
+.glass-hero {
+  padding: clamp(2rem, 8vw, 4rem) !important;
+}
+
+/* Cards & Grids */
+.glass-card, .glass-section {
+  border-radius: 20px !important;
+  padding: clamp(1.5rem, 6vw, 3rem) !important;
+  margin-bottom: 2rem;
+}
+
+[class*="grid"] {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: clamp(1.5rem, 6vw, 3rem) !important;
+}
+
+@media (min-width: 600px) {
+  [class*="grid"] {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+  }
+}
+
+/* Buttons */
+.btn-primary {
+  padding: clamp(0.8rem, 4vw, 1.2rem) clamp(1.5rem, 5vw, 2.5rem) !important;
+  font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px !important;
+}
+
+/* Timeline Mobile */
+@media (max-width: 600px) {
+  .timeline-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+
+  .timeline-item {
+    margin-left: 4rem !important;
+  }
+
+  .timeline-line {
+    left: 2rem !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* iOS Safari Fixes */
+@supports (-webkit-touch-callout: none) {
+  html {
+    font-size: calc(16px + 0.5vw);
+  }
+}
