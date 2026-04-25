@@ -108,9 +108,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mobile dropdown click
   navList.querySelectorAll('.dropdown > a').forEach(link => {
     link.addEventListener('click', (e) => {
-      e.preventDefault();
       const dropdown = link.parentElement;
-      dropdown.classList.toggle('active');
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        // If dropdown is already open, allow navigation; otherwise open it
+        if (dropdown.classList.contains('active')) {
+          return; // Navigate normally
+        } else {
+          e.preventDefault();
+          dropdown.classList.add('active');
+        }
+      }
     });
   });
 });

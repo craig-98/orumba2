@@ -27,8 +27,8 @@
         <h2 class="fade-in-up">Our Departments</h2>
         
         <!-- ICT -->
-        <div class="dept-card glass-card fade-in-up" data-dept="ICT">
-fill="#22c55e"
+        <div class="dept-card glass-card fade-in-up" id="ict" data-dept="ICT">
+            <svg class="dept-icon" viewBox="0 0 80 80" fill="#22c55e">
                 <rect x="10" y="15" width="60" height="40" rx="8" fill="rgba(255,255,255,0.1)"/>
                 <rect x="18" y="23" width="44" height="8" rx="4" fill="#fff"/>
                 <rect x="18" y="35" width="44" height="8" rx="4" fill="#fff"/>
@@ -46,7 +46,7 @@ fill="#22c55e"
         </div>
 
         <!-- Finance -->
-        <div class="dept-card glass-card fade-in-up" data-dept="Finance">
+        <div class="dept-card glass-card fade-in-up" id="finance" data-dept="Finance">
             <svg class="dept-icon" viewBox="0 0 80 80" fill="#22c55e">
                 <rect x="15" y="20" width="50" height="35" rx="6" fill="rgba(255,255,255,0.1)"/>
                 <rect x="22" y="28" width="36" height="6" rx="3" fill="#fff"/>
@@ -65,7 +65,7 @@ fill="#22c55e"
         </div>
 
         <!-- HR/Admin -->
-        <div class="dept-card glass-card fade-in-up" data-dept="HR">
+        <div class="dept-card glass-card fade-in-up" id="hr" data-dept="HR">
             <svg class="dept-icon" viewBox="0 0 80 80" fill="#22c55e">
                 <circle cx="25" cy="25" r="12" fill="rgba(255,255,255,0.1)"/>
                 <circle cx="55" cy="25" r="12" fill="rgba(255,255,255,0.1)"/>
@@ -86,7 +86,7 @@ fill="#22c55e"
         </div>
 
         <!-- Engineering -->
-        <div class="dept-card glass-card fade-in-up" data-dept="Engineering">
+        <div class="dept-card glass-card fade-in-up" id="engineering" data-dept="Engineering">
             <svg class="dept-icon" viewBox="0 0 80 80" fill="#22c55e">
                 <rect x="10" y="20" width="60" height="40" rx="4" fill="rgba(255,255,255,0.1)"/>
                 <rect x="20" y="30" width="40" height="6" rx="2" fill="#fff"/>
@@ -105,7 +105,7 @@ fill="#22c55e"
         </div>
 
         <!-- Agriculture -->
-        <div class="dept-card glass-card fade-in-up" data-dept="Agriculture">
+        <div class="dept-card glass-card fade-in-up" id="agriculture" data-dept="Agriculture">
             <svg class="dept-icon" viewBox="0 0 80 80" fill="#22c55e">
                 <rect x="15" y="25" width="50" height="35" rx="8" fill="rgba(255,255,255,0.1)"/>
                 <path d="M20 20 Q30 15 40 20 Q50 25 60 20" stroke="#fff" stroke-width="4" fill="none"/>
@@ -124,7 +124,7 @@ fill="#22c55e"
         </div>
 
         <!-- Tourism -->
-        <div class="dept-card glass-card fade-in-up" data-dept="Tourism">
+        <div class="dept-card glass-card fade-in-up" id="tourism" data-dept="Tourism">
             <svg class="dept-icon" viewBox="0 0 80 80" fill="#22c55e">
                 <circle cx="40" cy="25" r="15" fill="rgba(255,255,255,0.1)"/>
                 <path d="M25 35 Q40 30 55 35" stroke="#fff" stroke-width="3" fill="none"/>
@@ -247,6 +247,21 @@ window.addEventListener('scroll', () => {
     const hero = document.querySelector('.departments-hero');
     if (hero) {
         hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+});
+
+// Hash scroll offset for fixed header
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+            setTimeout(() => {
+                const headerOffset = 100;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }, 300);
+        }
     }
 });
 </script>
