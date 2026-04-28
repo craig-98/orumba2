@@ -2,10 +2,12 @@ from flask import Flask, send_from_directory, request, jsonify, send_file, sessi
 import os
 import json
 import hashlib
+import secrets
 from functools import wraps
 
+from app.db import db
+
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'), static_url_path='/static', template_folder='app/templates')
-import secrets
 app.secret_key = os.environ.get('SECRET_KEY') or secrets.token_hex(24)
 
 posts = []
@@ -14,132 +16,88 @@ events = []
 albums = []
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-POSTS_FILE = os.path.join(BASE_DIR, 'instance', 'posts.json')
-USERS_FILE = os.path.join(BASE_DIR, 'instance', 'users.json')
-EVENTS_FILE = os.path.join(BASE_DIR, 'instance', 'events.json')
-ALBUMS_FILE = os.path.join(BASE_DIR, 'instance', 'albums.json')
-
-def load_posts():
-    global posts
-    if os.path.exists(POSTS_FILE):
-        with open(POSTS_FILE, 'r', encoding='utf-8') as f:
-            try:
-                loaded = json.load(f)
-                # Migrate old schema
-                for p in loaded:
-                    if 'user_id' not in p:
-                        p['user_id'] = None
-                    if 'category' not in p:
-                        p['category'] = 'general'
-                    if 'status' not in p:
-                        p['status'] = 'published' if p.get('author') else 'draft'
-                    if 'image' not in p:
-                        p['image'] = ''
-                posts = loaded
-            except json.JSONDecodeError:
-                posts = []
-    else:
-        posts = []
-
-def save_posts():
-    with open(POSTS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(posts, f, ensure_ascii=False, indent=2)
-
-def load_users():
-    global users
-    next_user_id = 1
-    if os.path.exists(USERS_FILE):
-        with open(USERS_FILE, 'r', encoding='utf-8') as f:
-            try:
-                users = json.load(f)
-                # Migrate: assign ids, defaults
-                for user in users:
-                    if 'id' not in user:
-                        user['id'] = next_user_id
-                        next_user_id += 1
-                    if 'role' not in user:
-                        user['role'] = 'citizen'
-                    if 'name' not in user:
-                        user['name'] = user['username']
-                    if 'email' not in user:
-                        user['email'] = ''
-                    if 'avatar' not in user:
-                        user['avatar'] = ''
-                save_users()  # Persist migration
-            except json.JSONDecodeError:
-                users = []
-    else:
-        users = []
-        save_users()
-
-def save_users():
-    with open(USERS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(users, f, ensure_ascii=False, indent=2)
-
-def load_events():
-    global events
-    if os.path.exists(EVENTS_FILE):
-        with open(EVENTS_FILE, 'r', encoding='utf-8') as f:
-            try:
-                events = json.load(f)
-            except json.JSONDecodeError:
-                events = []
-    else:
-        events = []
-
-def save_events():
-    with open(EVENTS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(events, f, ensure_ascii=False, indent=2)
-
-def load_albums():
-    global albums
-    if os.path.exists(ALBUMS_FILE):
-        with open(ALBUMS_FILE, 'r', encoding='utf-8') as f:
-            try:
-                loaded = json.load(f)
-                # Migrate
-                for alb in loaded:
-                    if 'user_id' not in alb:
-                        alb['user_id'] = None
-                albums = loaded
-            except json.JSONDecodeError:
-                albums = []
-    else:
-        albums = []
-
-def save_albums():
-    with open(ALBUMS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(albums, f, ensure_ascii=False, indent=2)
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
+
+def load_posts():
+    global posts
+    loaded = db.load_posts()
+    for p in loaded:
+        if 'user_id' not in p:
+            p['user_id'] = None
+        if 'category' not in p:
+            p['category'] = 'general'
+        if 'status' not in p:
+            p['status'] = 'published' if p.get('author') else 'draft'
+        if 'image' not in p:
+            p['image'] = ''
+    posts = loaded
+
+def save_posts():
+    pass
+
+def load_users():
+    global users
+    loaded = db.load_users()
+    next_user_id = 1
+    for user in loaded:
+        if 'id' not in user:
+            user['id'] = next_user_id
+            next_user_id += 1
+        if 'role' not in user:
+            user['role'] = 'citizen'
+        if 'name' not in user:
+            user['name'] = user['username']
+        if 'email' not in user:
+            user['email'] = ''
+        if 'avatar' not in user:
+            user['avatar'] = ''
+    users = loaded
+
+def save_users():
+    pass
+
+def load_events():
+    global events
+    events = db.load_events()
+
+def save_events():
+    pass
+
+def load_albums():
+    global albums
+    loaded = db.load_albums()
+    for alb in loaded:
+        if 'user_id' not in alb:
+            alb['user_id'] = None
+    albums = loaded
+
+def save_albums():
+    pass
 
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if 'username' not in session:
             return redirect('/login')
-        # Get current user
         current_user = next((u for u in users if u['username'] == session['username']), None)
         if not current_user:
             session.pop('username', None)
             return redirect('/login')
-        # Ensure 'id' key exists
         if 'id' not in current_user:
-            current_user['id'] = 1  # default
+            current_user['id'] = 1
         if 'role' not in current_user:
             current_user['role'] = 'citizen'
         session['user_id'] = current_user['id']
         session['role'] = current_user['role']
-        save_users()  # persist
         return f(*args, **kwargs)
     return decorated_function
-
 
 def admin_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        login_required(lambda: None)(*args, **kwargs)  # Ensure login
+        login_required(lambda: None)(*args, **kwargs)
         if session.get('role') != 'admin':
             return jsonify({'status': 'error', 'message': 'Admin access required'}), 403
         return f(*args, **kwargs)
@@ -191,8 +149,8 @@ def api_create_post():
         'status': data.get('status', 'draft'),
         'created_at': data.get('created_at', '')
     }
+    db.save_post(new_post)
     posts.append(new_post)
-    save_posts()
     return jsonify({'status': 'success', 'post': new_post})
 
 @app.route('/api/profile/posts/<int:post_id>', methods=['PUT'])
@@ -204,7 +162,7 @@ def api_update_post(post_id):
         return jsonify({'status': 'error', 'message': 'Post not found'}), 404
     data = request.get_json()
     post.update(data)
-    save_posts()
+    db.update_post(post_id, data)
     return jsonify({'status': 'success', 'post': post})
 
 @app.route('/api/profile/posts/<int:post_id>', methods=['DELETE'])
@@ -213,10 +171,9 @@ def api_delete_post(post_id):
     user_id = session.get('user_id')
     global posts
     posts = [p for p in posts if not (p['id'] == post_id and p.get('user_id') == user_id)]
-    save_posts()
+    db.delete_post(post_id, user_id)
     return jsonify({'status': 'success'})
 
-# Similar for albums (simplified)
 @app.route('/api/profile/albums', methods=['GET'])
 @login_required
 def api_profile_albums():
@@ -234,13 +191,12 @@ def api_create_album():
         'id': max_id + 1,
         'user_id': user_id,
         'title': data.get('title', ''),
-        'posts': data.get('posts', [])  # images
+        'posts': data.get('posts', [])
     }
+    db.save_album(new_album)
     albums.append(new_album)
-    save_albums()
     return jsonify({'status': 'success', 'album': new_album})
 
-# Events
 @app.route('/api/profile/events', methods=['GET'])
 @login_required
 def api_profile_events():
@@ -259,11 +215,10 @@ def api_create_event():
         'user_id': user_id,
         **data
     }
+    db.save_event(new_event)
     events.append(new_event)
-    save_events()
     return jsonify({'status': 'success', 'event': new_event})
 
-# Upload (basic)
 @app.route('/api/upload/image', methods=['POST'])
 @login_required
 def api_upload_image():
@@ -273,15 +228,14 @@ def api_upload_image():
     if file.filename == '':
         return jsonify({'status': 'error'}), 400
     user_id = session.get('user_id')
-    upload_dir = os.path.join('static', 'uploads', f'user_{user_id}')
+    upload_dir = os.path.join('static', 'uploads', 'user_' + str(user_id))
     os.makedirs(os.path.join(BASE_DIR, upload_dir), exist_ok=True)
-    filename = f"{hashlib.md5(file.filename.encode()).hexdigest()}_{file.filename}"
+    filename = hashlib.md5(file.filename.encode()).hexdigest() + '_' + file.filename
     filepath = os.path.join(BASE_DIR, upload_dir, filename)
     file.save(filepath)
-    url = f"/{upload_dir}/{filename}"
+    url = '/' + upload_dir.replace('\\', '/') + '/' + filename
     return jsonify({'status': 'success', 'url': url})
 
-# Settings update profile
 @app.route('/api/profile/settings', methods=['PUT'])
 @login_required
 def api_update_profile():
@@ -292,39 +246,14 @@ def api_update_profile():
     for key in allowed:
         if key in data:
             user[key] = data[key]
-    save_users()
+    db.update_user(username, {k: v for k, v in data.items() if k in allowed})
     return jsonify({'status': 'success'})
 
+# Load initial data
 load_users()
 load_posts()
 load_albums()
 load_events()
-
-# Add sample album data with valid image content if albums is empty
-# if not albums:
-#     albums.append({
-#         'id': 1,
-#         'posts': [
-#             {
-#                 'id': 1,
-#                 'content': '<img src="/static/sample1.jpg" alt="Sample Image 1">',
-#                 'caption': 'Sample Image 1 Caption'
-#             },
-#             {
-#                 'id': 2,
-#                 'content': '<img src="/static/sample2.jpg" alt="Sample Image 2">',
-#                 'caption': 'Sample Image 2 Caption'
-#             },
-#             {
-#                 'id': 3,
-#                 'content': '<img src="/static/sample3.jpg" alt="Sample Image 3">',
-#                 'caption': 'Sample Image 3 Caption'
-#             }
-#         ]
-#     })
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# HTML_DIR = os.path.join(BASE_DIR, 'beautiful_website')
 
 @app.route('/')
 def serve_home():
@@ -353,8 +282,17 @@ def api_register():
     if any(u['username'] == username for u in users):
         return jsonify({'status': 'error', 'message': 'Username already exists'}), 400
     hashed_pw = hash_password(password)
-    users.append({'username': username, 'password': hashed_pw})
-    save_users()
+    new_user = {
+        'username': username,
+        'password': hashed_pw,
+        'id': max([u.get('id', 0) for u in users], default=0) + 1,
+        'role': 'citizen',
+        'name': username,
+        'email': '',
+        'avatar': ''
+    }
+    db.save_user(new_user)
+    users.append(new_user)
     return jsonify({'status': 'success', 'message': 'User registered successfully'})
 
 @app.route('/api/login', methods=['POST'])
@@ -398,11 +336,6 @@ def serve_create_album():
 def serve_create_event():
     return render_template('create_event.html')
 
-# Removed create-album route (public site)
-
-# Removed private posts API (keep public only)
-
-
 @app.route('/api/public/posts', methods=['GET'])
 def api_public_get_posts():
     public_posts = [p for p in posts if p.get('status') == 'published']
@@ -415,7 +348,6 @@ def api_public_get_events():
 
 @app.route('/api/public/post/<int:post_id>', methods=['GET'])
 def api_get_post(post_id):
-    global posts
     post = next((p for p in posts if p.get('id') == post_id), None)
     if post:
         return jsonify({
@@ -437,11 +369,6 @@ def api_public_get_albums():
 @app.route('/about')
 def serve_about():
     return render_template('about.html')
-
-
-# @app.route('/news-announcements')
-# def serve_news():
-#     return render_template('news_hub.html')
 
 @app.route('/services')
 def serve_services():
@@ -499,8 +426,6 @@ def serve_news():
 def serve_gallery():
     return render_template('gallery.html')
 
-
-# Duplicate routes removed to fix endpoint conflict
 @app.route('/newsroom')
 def serve_newsroom():
     return render_template('newsroom.html')
@@ -517,9 +442,5 @@ def serve_post(post_id):
 def serve_departments():
     return render_template('departments.html')
 
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000, debug=True)
-
-
-
