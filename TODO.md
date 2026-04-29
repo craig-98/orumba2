@@ -1,32 +1,23 @@
-# Supabase Migration Plan
+# Orumba North LGA Styling Fix - Task Tracker
 
-## Steps
-- [x] 1. Analyze current data models (posts, users, events, albums)
-- [x] 2. Add `supabase` to requirements.txt
-- [x] 3. Create `app/db.py` with Supabase client wrapper + JSON fallback
-- [x] 4. Refactor app.py to use db.py (all routes preserved)
-- [x] 5. Create SQL schema for Supabase tables
-- [ ] 6. Create Supabase project and run SQL
-- [ ] 7. Add env vars to Vercel dashboard
-- [ ] 8. Deploy and test
+## Current Status: 🔍 Diagnosing Live Site Issues
 
-## How it works
-- **Locally**: No Supabase credentials = automatically uses JSON files (same as before)
-- **On Vercel**: Set `SUPABASE_URL` and `SUPABASE_KEY` = uses PostgreSQL database (data persists)
+### Steps Completed ✅
+1. ✅ [Done] Confirmed all CSS files return 404 on live site (curl tests)
+2. ✅ [Done] Identified SCSS `@extend` syntax errors in CSS files
+3. ✅ [Done] Read `app.py`, `vercel.json`, templates, and CSS files
+4. ✅ [Done] Confirmed Flask static serving configuration is correct locally
 
-## Files changed
-- `requirements.txt` — added `supabase==2.15.0`
-- `app.py` — replaced JSON load/save with `app.db` calls
-- `app/db.py` — new unified database layer
-- `supabase_schema.sql` — SQL to create tables in Supabase
-- `vercel.json` — already updated for Vercel deployment
-- `api/index.py` — already updated for Vercel entry point
+### Remaining Steps ⏳
+```
+1. **Fix SCSS syntax errors** (remove @extend from CSS files)
+2. **Test local server** (`python app.py` - verify static files load)
+3. **Update vercel.json** (add static caching headers)
+4. **Commit changes** to `blackboxai/fix-vercel-static-files` 
+5. **Redeploy** and test live site
+6. **Verify styling** on https://www.orumbanorthgov.org/
+```
 
-## Next steps for you
-1. Go to https://supabase.com and create a new project
-2. In the SQL Editor, run the contents of `supabase_schema.sql`
-3. In your Vercel project dashboard, add Environment Variables:
-   - `SUPABASE_URL` = your Supabase project URL
-   - `SUPABASE_KEY` = your Supabase anon/public key
-   - `SECRET_KEY` = any random string
-4. Deploy: `vercel --prod`
+### Next Action
+Fix `static/css/glassmorphism.css` and `static/css/global-theme.css` SCSS syntax errors
+

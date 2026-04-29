@@ -7,7 +7,7 @@ from functools import wraps
 
 from app.db import db
 
-app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'), static_url_path='/static', template_folder='app/templates')
+app = Flask(__name__, static_folder=os.path.abspath(os.path.join(os.path.dirname(__file__), 'static')), static_url_path='/static', template_folder='app/templates')
 app.secret_key = os.environ.get('SECRET_KEY') or secrets.token_hex(24)
 
 posts = []
@@ -16,6 +16,14 @@ events = []
 albums = []
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.static_folder, 'images'), 'orumba-north-logo.jpg', mimetype='image/jpeg')
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory(app.static_folder, 'robots.txt', mimetype='text/plain')
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()

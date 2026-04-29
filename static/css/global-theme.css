@@ -192,7 +192,11 @@ p { margin-bottom: 1rem; }
 }
 
 .ql-card {
-  @extend .card;
+  background-color: var(--card-bg);
+  border: 1px solid #dee2e6;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
   text-align: center;
   padding: var(--spacing-lg);
   cursor: pointer;
