@@ -460,16 +460,38 @@
             } catch (e) { console.log('User info unavailable'); }
         }
 
-        document.getElementById('logoutBtn').addEventListener('click', async (e) => {
-            e.preventDefault();
-            await fetch('/api/logout', { method: 'POST' });
-            window.location.href = '/';
-        });
+        async function loadRole() {
+            try {
+                const res = await fetch('/api/check-auth');
+                const data = await res.json();
+                if (data && data.authenticated) {
+                    // Backend only returns { authenticated, username }.
+                    // Role is defaulted to Citizen in backend auth middleware.
+                    const roleEl = document.getElementById('userRole');
+                    if (roleEl) roleEl.textContent = 'Citizen';
+                }
+            } catch (e) {}
+        }
 
-        window.addEventListener('load', () => {
-            loadUser();
-            loadStats();
-        });
+        function safeInit() {
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    await fetch('/api/logout', { method: 'POST' });
+                    window.location.href = '/';
+                });
+            }
+
+            window.addEventListener('load', () => {
+                loadUser();
+                loadRole();
+                loadStats();
+            });
+        }
+
+        safeInit();
+
     </script>
 </body>
 </html>

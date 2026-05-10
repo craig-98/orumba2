@@ -8,7 +8,17 @@ from functools import wraps
 from app.db import db
 
 app = Flask(__name__, static_folder=os.path.abspath(os.path.join(os.path.dirname(__file__), 'static')), static_url_path='/static', template_folder='app/templates')
-app.secret_key = os.environ.get('SECRET_KEY') or secrets.token_hex(24)
+
+# IMPORTANT: Flask sessions require a stable secret key across deploys.
+#
+# If SECRET_KEY is not set, the previous code used a random token per process start,
+# which breaks session persistence after restarts (login/register).
+#
+# We provide a stable fallback so sessions keep working even without env config.
+# (Recommended: set SECRET_KEY in production anyway.)
+STABLE_SECRET_KEY_FALLBACK = "orumba2-stable-secret-key-change-me-please"
+app.secret_key = os.environ.get('SECRET_KEY') or STABLE_SECRET_KEY_FALLBACK
+
 
 posts = []
 users = []

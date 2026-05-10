@@ -33,13 +33,55 @@
         }
 
         h1 {
-            color: #fff;
+            color: #000;
+            font-weight: 800;
             text-align: center;
             margin-bottom: 1.5rem;
             font-size: clamp(1.6rem, 5vw, 2.5rem);
             font-weight: 700;
             text-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
+
+        /* Make every visible text black on Create Post page */
+        main, main * {
+            color: #000 !important;
+            font-weight: 800 !important;
+        }
+
+        /* Also force Quill editor + placeholder + toolbar to black */
+        #editor-container .ql-editor,
+        #editor-container .ql-editor * {
+            color: #000 !important;
+            font-weight: 800 !important;
+        }
+
+        #editor-container .ql-editor.ql-blank::before {
+            color: rgba(0,0,0,0.6) !important;
+            font-style: normal !important;
+            font-weight: 800 !important;
+        }
+
+        #editor-container .ql-toolbar.ql-snow,
+        #editor-container .ql-toolbar.ql-snow * {
+            color: #000 !important;
+            font-weight: 800 !important;
+        }
+
+        #editor-container .ql-toolbar.ql-snow .ql-stroke {
+            stroke: #000 !important;
+        }
+
+        #editor-container .ql-toolbar.ql-snow .ql-fill {
+            fill: #000 !important;
+        }
+
+        /* Keep status/help text black too */
+        .status-msg,
+        .status-msg * {
+            color: #000 !important;
+            font-weight: 800 !important;
+        }
+
 
         .form-container {
             background: rgba(255,255,255,0.08);
@@ -86,16 +128,38 @@
             background: rgba(255,255,255,0.06);
             padding: 0.5rem 0.75rem;
         }
+        .ql-container.ql-snow { border: none; background: transparent; }
+
+        /* Force Quill editor/toolbar to BLACK (match Create Album style) */
         .ql-toolbar.ql-snow .ql-picker-label,
         .ql-toolbar.ql-snow .ql-picker-item,
-        .ql-toolbar.ql-snow button { color: #fff; stroke: #fff; }
-        .ql-toolbar.ql-snow .ql-stroke { stroke: #fff; }
-        .ql-toolbar.ql-snow .ql-fill { fill: #fff; }
-        .ql-toolbar.ql-snow button:hover .ql-stroke,
-        .ql-toolbar.ql-snow .ql-active .ql-stroke { stroke: #22c55e; }
-        .ql-container.ql-snow { border: none; background: transparent; }
-        .ql-editor { color: #fff; font-size: 1rem; font-family: var(--font-body); min-height: clamp(200px, 35vh, 350px); }
-        .ql-editor.ql-blank::before { color: rgba(255,255,255,0.4); font-style: normal; }
+        .ql-toolbar.ql-snow button {
+            color: #000 !important;
+            stroke: #000 !important;
+        }
+        .ql-toolbar.ql-snow .ql-stroke { stroke: #000 !important; }
+        .ql-toolbar.ql-snow .ql-fill { fill: #000 !important; }
+
+        .ql-editor {
+            color: #000 !important;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            min-height: clamp(200px, 35vh, 350px);
+        }
+        .ql-editor.ql-blank::before { color: rgba(0,0,0,0.55) !important; font-style: normal !important; }
+
+        #editor-container .ql-editor,
+        #editor-container .ql-editor * {
+            color: #000 !important;
+            font-weight: 800 !important;
+        }
+        #editor-container .ql-toolbar.ql-snow,
+        #editor-container .ql-toolbar.ql-snow * {
+            color: #000 !important;
+            font-weight: 800 !important;
+        }
+        #editor-container .ql-toolbar.ql-snow .ql-stroke { stroke: #000 !important; }
+        #editor-container .ql-toolbar.ql-snow .ql-fill { fill: #000 !important; }
 
         .btn-submit {
             display: inline-flex;

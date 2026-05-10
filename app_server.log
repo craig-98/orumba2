@@ -1,0 +1,111 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.0.12:3000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 703-726-040
+127.0.0.1 - - [08/May/2026 06:24:57] "GET /create_album HTTP/1.1" 404 -
+127.0.0.1 - - [08/May/2026 06:24:57] "GET /favicon.ico HTTP/1.1" 304 -
+127.0.0.1 - - [08/May/2026 06:24:57] "GET /create-album HTTP/1.1" 302 -
+127.0.0.1 - - [08/May/2026 06:25:08] "GET /create-album HTTP/1.1" 302 -
+127.0.0.1 - - [08/May/2026 06:25:08] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 07:16:48] "GET /create_album HTTP/1.1" 404 -
+127.0.0.1 - - [08/May/2026 07:16:49] "GET /favicon.ico HTTP/1.1" 304 -
+127.0.0.1 - - [08/May/2026 07:21:40] "GET /create_album HTTP/1.1" 404 -
+127.0.0.1 - - [08/May/2026 07:21:40] "GET /favicon.ico HTTP/1.1" 304 -
+127.0.0.1 - - [08/May/2026 07:23:06] "GET /create-event HTTP/1.1" 302 -
+127.0.0.1 - - [08/May/2026 07:23:06] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 07:23:07] "GET /static/css/global-theme.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/May/2026 07:23:07] "GET /static/css/mobile-global.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/May/2026 07:23:07] "GET /static/css/navbar.css HTTP/1.1" 304 -
+127.0.0.1 - - [09/May/2026 23:56:06] "GET /create-album HTTP/1.1" 302 -
+127.0.0.1 - - [09/May/2026 23:56:06] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [09/May/2026 23:56:06] "GET /static/css/global-theme.css HTTP/1.1" 304 -
+127.0.0.1 - - [09/May/2026 23:56:06] "GET /static/css/navbar.css HTTP/1.1" 304 -
+127.0.0.1 - - [09/May/2026 23:56:06] "GET /static/css/mobile-global.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:02:20] "GET / HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:21] "GET /static/css/global-theme.css HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:21] "GET /static/images/orumba-north-logo.jpg HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:21] "GET /static/css/mobile-global.css HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:21] "GET /static/css/glassmorphism.css HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:21] "GET /static/css/navbar.css HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:22] "GET /static/images/orumba-header-bakground-image3.jpg HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:22] "GET /static/images/orumba-header-bakground-image.jpg HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:22] "GET /static/images/orumba-header-bakground-image2.jpg HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:23] "GET /api/check-auth HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:23] "GET /api/public/posts HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:23] "GET /favicon.ico HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:29] "GET /newsroom HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:30] "GET /static/css/global-theme.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:02:30] "GET /static/css/mobile-global.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:02:30] "GET /static/css/navbar.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:02:30] "GET /static/images/orumba-north-logo.jpg HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:02:30] "GET /static/css/glassmorphism.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:02:30] "GET /api/check-auth HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:30] "GET /static/images/orumba-header-bakground-image3.jpg HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:02:30] "GET /api/public/posts HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:33] "GET /login HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:02:33] "GET /static/css/global-theme.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:02:34] "GET /static/css/navbar.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:02:34] "GET /static/css/mobile-global.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:11] "GET / HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:11] "GET /static/css/global-theme.css HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:11] "GET /static/css/navbar.css HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:11] "GET /static/css/mobile-global.css HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:11] "GET /static/css/glassmorphism.css HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:11] "GET /static/images/orumba-north-logo.jpg HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:12] "GET /static/images/orumba-header-bakground-image.jpg HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:12] "GET /static/images/orumba-header-bakground-image2.jpg HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:12] "GET /static/images/orumba-header-bakground-image3.jpg HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:12] "GET /api/check-auth HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:13] "GET /api/public/posts HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:13] "GET /favicon.ico HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:14] "GET /login HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:14] "GET /static/css/navbar.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:14] "GET /static/css/global-theme.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:14] "GET /static/css/mobile-global.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:22] "GET /register HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:22] "GET /static/css/global-theme.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:22] "GET /static/css/navbar.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:22] "GET /static/css/mobile-global.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:29] "POST /api/register HTTP/1.1" 400 -
+192.168.1.183 - - [10/May/2026 00:03:43] "POST /api/register HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:45] "GET /login HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:45] "GET /static/css/navbar.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:45] "GET /static/css/global-theme.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:45] "GET /static/css/mobile-global.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:53] "POST /api/login HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:53] "POST /api/login HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:54] "GET / HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:54] "GET / HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:55] "GET /static/css/global-theme.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:55] "GET /static/css/navbar.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:55] "GET /static/css/mobile-global.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:55] "GET /static/css/glassmorphism.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:55] "GET /static/images/orumba-north-logo.jpg HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:55] "GET /static/images/orumba-header-bakground-image.jpg HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:55] "GET /static/images/orumba-header-bakground-image2.jpg HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:55] "GET /static/images/orumba-header-bakground-image3.jpg HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:55] "GET /api/check-auth HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:55] "GET /api/public/posts HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:58] "GET /profile HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:58] "GET /static/css/global-theme.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:58] "GET /static/images/orumba-north-logo.jpg HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:58] "GET /static/css/mobile-global.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:58] "GET /static/css/navbar.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:58] "GET /static/css/glassmorphism.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:03:58] "GET /api/check-auth HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:58] "GET /api/check-auth HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:58] "GET /api/profile/stats HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:03:58] "GET /api/check-auth HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:04:03] "GET /create-post HTTP/1.1" 200 -
+192.168.1.183 - - [10/May/2026 00:04:03] "GET /static/css/global-theme.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:04:03] "GET /static/css/navbar.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:04:03] "GET /static/css/mobile-global.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:04:03] "GET /static/css/glassmorphism.css HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:04:03] "GET /static/images/orumba-north-logo.jpg HTTP/1.1" 304 -
+192.168.1.183 - - [10/May/2026 00:04:03] "GET /api/check-auth HTTP/1.1" 200 -

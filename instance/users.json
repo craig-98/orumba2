@@ -52,5 +52,23 @@
     "name": "marscorto1@gmail.com",
     "email": "",
     "avatar": ""
+  },
+  {
+    "username": "MC",
+    "password": "b90126338d8b23cdd7c6539fb3f539cbb102a96dd7a0d68dcdcde4711923211b",
+    "id": 4,
+    "role": "citizen",
+    "name": "MC",
+    "email": "",
+    "avatar": ""
+  },
+  {
+    "username": "Ma",
+    "password": "2b5dc17931cd90f40579abd1f5f6a2161e07f3e0440abe658a463e63a5bcc2b1",
+    "id": 5,
+    "role": "citizen",
+    "name": "Ma",
+    "email": "",
+    "avatar": ""
   }
 ]
