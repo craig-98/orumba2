@@ -6,91 +6,21 @@
     <meta name="description" content="Government structure of Orumba North LGA — Executive, Legislative, Supervisors, and Department Heads.">
     <title>Government — Orumba North LGA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/global-theme.css">
     <link rel="stylesheet" href="/static/css/navbar.css">
     <link rel="stylesheet" href="/static/css/mobile-global.css">
     <link rel="stylesheet" href="/static/css/glassmorphism.css">
-    <style>
-        .gov-hero {
-            position: relative;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: -75px;
-            padding-top: 75px;
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.6)), url('/static/images/orumba-header-bakground-image2.jpg') center/cover no-repeat;
-            color: white;
-            text-align: center;
-        }
-        .gov-hero h1 { font-size: var(--text-4xl); font-weight: 800; margin-bottom: 0.75rem; text-shadow: 0 4px 20px rgba(0,0,0,0.4); }
-        .gov-hero p { font-size: var(--text-lg); opacity: 0.95; max-width: 700px; margin: 0 auto 1.5rem; }
-
-        .tabs-nav {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-        .tab-btn {
-            padding: 0.75rem 1.5rem;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        .tab-btn:hover, .tab-btn.active {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-2px);
-        }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .gov-card {
-            padding: 2.5rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            height: 100%;
-        }
-        .gov-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #22c55e, #16a34a);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .gov-card:hover::before { opacity: 1; }
-        .gov-avatar {
-            width: 120px; height: 120px; border-radius: 50%;
-            background: linear-gradient(135deg, rgba(34,197,94,0.15), rgba(22,163,74,0.15));
-            border: 3px solid rgba(34,197,94,0.3);
-            margin: 0 auto 1.25rem;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2.5rem; color: #16a34a;
-        }
-        .gov-card h3 { font-size: var(--text-xl); color: #111827; margin-bottom: 0.5rem; }
-        .gov-role { color: #16a34a; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.75rem; }
-        .gov-card p { color: #4b5563; line-height: 1.7; font-size: var(--text-base); }
-    </style>
+    <link rel="stylesheet" href="/static/css/government-page.css">
 </head>
 <body>
+
     {% include '_header.html' %}
 
     <section class="gov-hero">
         <div class="container">
             <h1>Government Structure</h1>
-            <p>A transparent, accountable, and people-focused administration serving all 10 wards of Orumba North.</p>
+            <p>A transparent, accountable, and people-focused administration serving all 18 wards of Orumba North.</p>
             <a href="/government/administration" class="btn-primary" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); padding: 0.875rem 2rem; border-radius: 50px; color: white; text-decoration: none; font-weight: 600; display: inline-block;">View Administration</a>
         </div>
     </section>
@@ -101,13 +31,14 @@
                 <button class="tab-btn active" data-tab="executive">Executive Arm</button>
                 <button class="tab-btn" data-tab="legislative">Legislative Arm</button>
                 <button class="tab-btn" data-tab="supervisors">Supervisors</button>
-                <button class="tab-btn" data-tab="hods">Department Heads</button>
+                <button class="tab-btn" data-tab="department-heads">Department Heads</button>
             </div>
 
+            <!-- Executive -->
             <div id="executive" class="tab-content active">
                 <div class="grid-responsive-3">
                     <div class="glass-card gov-card">
-                        <div class="gov-avatar">&#128100;</div>
+                        <img class="gov-avatar" src="/static/images/mayorimg3.JPG" alt="Hon. Barr. Casmir Chinonso Nwafor" loading="lazy"/>
                         <h3>Hon. Barr. Casmir Chinonso Nwafor</h3>
                         <p class="gov-role">Executive Chairman</p>
                         <p>Chief executive officer responsible for policy implementation, strategic planning, and development initiatives across all 10 wards.</p>
@@ -124,53 +55,61 @@
                         <p class="gov-role">Head of Administration</p>
                         <p>Coordinates all government operations, manages records, and ensures seamless inter-departmental communication.</p>
                     </div>
+
+
+                </div>
             </div>
 
+            <!-- Legislative -->
             <div id="legislative" class="tab-content">
                 <div class="grid-responsive-3">
                     <div class="glass-card gov-card">
+                        <div class="gov-avatar">&#128100;</div>
+                        <h3>Legislative Leadership</h3>
+                        <p class="gov-role">House Committee Oversight</p>
+                        <p>Ensures enactment of by-laws, budget oversight, and representation of community interests.</p>
+                    </div>
+                    <div class="glass-card gov-card">
                         <div class="gov-avatar">&#128101;</div>
-                        <h3>10 Ward Councilors</h3>
-                        <p class="gov-role">Legislative Arm</p>
-                        <p>Elected representatives from each of the 10 wards who make laws, approve budgets, and ensure grassroots participation.</p>
+                        <h3>Ward Representatives</h3>
+                        <p class="gov-role">Grassroots Participation</p>
+                        <p>Provides ward-based legislative input and monitors constituency projects and service delivery.</p>
                     </div>
                     <div class="glass-card gov-card">
                         <div class="gov-avatar">&#128100;</div>
-                        <h3>Hon. Williams Omenuko</h3>
-                        <p class="gov-role">Council Leader</p>
-                        <p>Presiding officer of the legislative council, coordinating meetings and legislative business.</p>
+                        <h3>Committee Members</h3>
+                        <p class="gov-role">Policy &amp; Budget Review</p>
+                        <p>Reviews sector proposals, conducts legislative hearings, and supports council decisions.</p>
                     </div>
-                    <div class="glass-card gov-card">
-                        <div class="gov-avatar">&#128100;</div>
-                        <h3>Hon. Nwankwo Ikenna Kenneth</h3>
-                        <p class="gov-role">Deputy Leader</p>
-                        <p>Supports the council leader in legislative functions and represents council interests at executive meetings.</p>
-                    </div>
+                </div>
             </div>
 
+            <!-- Supervisors -->
             <div id="supervisors" class="tab-content">
                 <div class="grid-responsive-3">
                     <div class="glass-card gov-card">
                         <div class="gov-avatar">&#127973;</div>
-                        <h3>Hon. Mrs Christiana Nwankwo</h3>
-                        <p class="gov-role">Health Supervisor</p>
-                        <p>Oversees primary healthcare centres, vaccination programmes, and public health initiatives across the LGA.</p>
+                        <h3>Supervision &amp; Compliance</h3>
+                        <p class="gov-role">Sector Supervisors</p>
+                        <p>Coordinates implementation across key sectors, ensuring quality, accountability, and timelines.</p>
                     </div>
                     <div class="glass-card gov-card">
                         <div class="gov-avatar">&#127979;</div>
-                        <h3>Education Supervisor</h3>
-                        <p class="gov-role">Schools &amp; Training</p>
-                        <p>Manages school infrastructure, teacher welfare, scholarships, and adult literacy programmes.</p>
+                        <h3>Works Oversight</h3>
+                        <p class="gov-role">Public Infrastructure</p>
+                        <p>Monitors road works, drainage systems, and public projects for effective delivery.</p>
                     </div>
                     <div class="glass-card gov-card">
                         <div class="gov-avatar">&#128679;</div>
-                        <h3>Engr. Austin Ganco O.</h3>
-                        <p class="gov-role">Works Supervisor</p>
-                        <p>Coordinates road maintenance, drainage systems, and public building construction projects.</p>
+                        <h3>Education &amp; Health</h3>
+                        <p class="gov-role">Social Services</p>
+                        <p>Supervises service outcomes in schools and health centres to improve community welfare.</p>
                     </div>
+                </div>
             </div>
 
-            <div id="hods" class="tab-content">
+            <!-- Department Heads -->
+            <div id="department-heads" class="tab-content">
                 <div class="grid-responsive-3">
                     <div class="glass-card gov-card">
                         <div class="gov-avatar">&#128187;</div>
@@ -190,38 +129,19 @@
                         <p class="gov-role">Personnel Management</p>
                         <p>Handles staff recruitment, training programmes, and welfare administration.</p>
                     </div>
-                <div class="text-center" style="margin-top: 3rem;">
-                    <a href="/departments" class="btn-primary" style="padding: 0.875rem 2rem;">All 10 Departments &rarr;</a>
                 </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="/departments" class="btn-primary" style="padding: 0.875rem 2rem;">All 10 Departments &rarr;</a>
+            </div>
         </div>
     </section>
 
     {% include '_footer.html' %}
 
-    <script>
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                btn.classList.add('active');
-                document.getElementById(btn.dataset.tab).classList.add('active');
-            });
-        });
+    <script src="/static/js/government-page.js"></script>
 
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            revealObserver.observe(card);
-        });
-    </script>
 </body>
 </html>
+
