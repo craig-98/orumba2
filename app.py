@@ -309,7 +309,14 @@ def api_register():
     try:
         db.save_user(new_user)
     except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+        # Fallback so registrations still work even if Supabase is misconfigured
+        try:
+            from app.db import _json_load, _json_save, USERS_FILE
+            data = _json_load(USERS_FILE)
+            data.append(new_user)
+            _json_save(USERS_FILE, data)
+        except Exception as e2:
+            return jsonify({'status': 'error', 'message': f"{e}; Fallback also failed: {e2}"}), 500
 
     users.append(new_user)
     return jsonify({'status': 'success', 'message': 'User registered successfully'})
