@@ -306,7 +306,11 @@ def api_register():
         'email': '',
         'avatar': ''
     }
-    db.save_user(new_user)
+    try:
+        db.save_user(new_user)
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
     users.append(new_user)
     return jsonify({'status': 'success', 'message': 'User registered successfully'})
 
